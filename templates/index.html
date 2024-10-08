@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concordia Connect HOME</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles.css') }}">
+</head>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<body>
+    <header>
+        <h1>Concordia Connect ~ Login</h1>
+    </header>
+
+    <form action="{{ url_for('handle_login') }}" method="POST" class="form-container">
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email...">
+        <br>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required placeholder="Enter your password...">
+        <br>
+        <br>
+        <div class="button-container">
+        <button type="submit" class="button">Login</button>
+        <a href="{{ url_for('sign_up') }}" class="button">Sign Up</a>
+        </div>
+        </div>
+    </form>
+</body>
+</html>
